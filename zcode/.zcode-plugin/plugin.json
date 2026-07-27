@@ -1,0 +1,27 @@
+{
+  "name": "shw-plugins",
+  "version": "4.0.6",
+  "description": "Spec-driven development workflow with parallel agent execution, TDD/debugging/verification disciplines, DDD architecture spec, and Gitea CI integration.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "spec-driven",
+    "workflow",
+    "tdd",
+    "subagent",
+    "parallel"
+  ],
+  "skills": "skills",
+  "commands": "commands",
+  "mcpServers": {
+    "shw-spec": {
+      "command": "node",
+      "args": [
+        "${ZCODE_PLUGIN_ROOT}/mcp-spec/index.js"
+      ]
+    }
+  },
+  "userConfig": {}
+}
