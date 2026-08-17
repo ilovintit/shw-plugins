@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${ZCODE_PLUGIN_ROOT}/hooks/stop-gate.sh\"",
+            "timeoutMs": 60000,
+            "statusMessage": "shw-gate：验证契约判定中"
+          }
+        ]
+      }
+    ]
+  }
+}
