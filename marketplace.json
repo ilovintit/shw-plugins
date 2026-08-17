@@ -1,0 +1,15 @@
+{
+  "name": "shw-plugins-market",
+  "owner": {
+    "name": "shw-plugins contributors"
+  },
+  "plugins": [
+    {
+      "name": "shw-plugins",
+      "description": "Spec-driven development workflow with parallel agent execution, TDD/debugging/verification disciplines, DDD architecture spec, and Gitea CI integration.",
+      "source": "zcode",
+      "category": "development",
+      "version": "4.3.0"
+    }
+  ]
+}
