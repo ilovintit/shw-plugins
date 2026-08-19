@@ -1,0 +1,49 @@
+{
+  "name": "shw-plugins",
+  "version": "5.5.0",
+  "description": "Spec-driven development workflow with parallel agent execution, TDD/debugging/verification disciplines, DDD architecture spec, and Gitea CI integration.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "spec-driven",
+    "workflow",
+    "tdd",
+    "subagent",
+    "parallel"
+  ],
+  "skills": "skills",
+  "commands": "commands",
+  "mcpServers": {
+    "shw-spec": {
+      "command": "node",
+      "args": [
+        "${ZCODE_PLUGIN_ROOT}/mcp-spec/index.js"
+      ]
+    },
+    "gitea": {
+      "command": "go",
+      "args": [
+        "run",
+        "gitea.com/gitea/gitea-mcp@v1.6.0"
+      ],
+      "env": {
+        "GITEA_HOST": "${user_config.gitea_host}",
+        "GITEA_ACCESS_TOKEN": "${user_config.gitea_token}"
+      }
+    }
+  },
+  "userConfig": {
+    "gitea_host": {
+      "type": "string",
+      "default": "",
+      "description": "你的 Gitea 实例地址（含协议头，如 https://gitea.example.com）"
+    },
+    "gitea_token": {
+      "type": "string",
+      "default": "",
+      "description": "Gitea API token（Gitea Web → Settings → Applications 创建，scope 按需勾选）"
+    }
+  }
+}
