@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "gitea": {
+      "command": "sh",
+      "args": [
+        "./mcp-shim/launch.sh"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "GITEA_HOST",
+        "GITEA_ACCESS_TOKEN",
+        "GITEA_MCP_BIN",
+        "GITEA_MCP_CACHE_DIR",
+        "GITEA_MCP_DOWNLOAD_BASE",
+        "GITEA_MCP_CALL_TIMEOUT_SECS"
+      ]
+    }
+  }
+}

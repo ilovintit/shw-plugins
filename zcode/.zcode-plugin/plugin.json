@@ -1,0 +1,42 @@
+{
+  "name": "shw-plugins",
+  "version": "6.2.0",
+  "description": "Issue-driven development workflow with parallel agent execution, TDD/debugging/verification disciplines, DDD architecture spec, and Gitea CI integration.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "issue-driven",
+    "workflow",
+    "tdd",
+    "subagent",
+    "parallel"
+  ],
+  "skills": "skills",
+  "commands": "commands",
+  "mcpServers": {
+    "gitea": {
+      "command": "sh",
+      "args": [
+        "${ZCODE_PLUGIN_ROOT}/mcp-shim/launch.sh"
+      ],
+      "env": {
+        "GITEA_HOST": "${user_config.gitea_host}",
+        "GITEA_ACCESS_TOKEN": "${user_config.gitea_token}"
+      }
+    }
+  },
+  "userConfig": {
+    "gitea_host": {
+      "type": "string",
+      "default": "",
+      "description": "你的 Gitea 实例地址（含协议头，如 https://gitea.example.com）"
+    },
+    "gitea_token": {
+      "type": "string",
+      "default": "",
+      "description": "Gitea API token（Gitea Web → Settings → Applications 创建，scope 按需勾选）"
+    }
+  }
+}
