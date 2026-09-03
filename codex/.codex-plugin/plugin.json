@@ -1,0 +1,37 @@
+{
+  "name": "shw",
+  "version": "6.4.0",
+  "description": "Issue-driven development workflow with parallel agent execution, TDD/debugging/verification disciplines, DDD architecture spec, and Gitea CI integration.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "homepage": "https://github.com/ilovintit/shw-plugins",
+  "repository": "https://github.com/ilovintit/shw-plugins",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "gitea",
+    "issue-driven",
+    "worktree",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "SHW",
+    "shortDescription": "Issue 驱动开发工作流",
+    "longDescription": "Issue-driven development workflow with Gitea integration, native Codex worktree mapping, TDD/debugging/verification disciplines, and parallel development guidance. Slash commands from the shared source are packaged as explicit Codex skill prompts.",
+    "developerName": "shw-plugins contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/ilovintit/shw-plugins",
+    "defaultPrompt": [
+      "用 /issue 把这个需求整理成 Issue",
+      "按 shw-worktree 在 Codex Worktree 里开工",
+      "用 /review 审查当前变更"
+    ]
+  }
+}
