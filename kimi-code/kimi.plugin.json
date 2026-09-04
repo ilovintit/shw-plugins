@@ -1,0 +1,23 @@
+{
+  "name": "shw-plugins",
+  "version": "7.0.0",
+  "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+  "interface": {
+    "displayName": "SHW Plugins",
+    "shortDescription": "一人 + Agent 产品全生命周期工作流",
+    "longDescription": "Product lifecycle workflow covering product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+    "developerName": "shw-plugins contributors",
+    "websiteURL": "https://github.com/ilovintit/shw-plugins"
+  },
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "mcpServers": {
+    "gitea": {
+      "command": "sh",
+      "args": [
+        "./mcp-shim/launch.sh"
+      ],
+      "cwd": "./"
+    }
+  }
+}

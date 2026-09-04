@@ -1,0 +1,20 @@
+{
+  "name": "shw-plugins-market",
+  "interface": {
+    "displayName": "SHW"
+  },
+  "plugins": [
+    {
+      "name": "shw",
+      "source": {
+        "source": "local",
+        "path": "./codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
