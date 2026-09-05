@@ -1,0 +1,59 @@
+{
+  "name": "shw-plugins",
+  "version": "7.0.1",
+  "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "issue-driven",
+    "workflow",
+    "tdd",
+    "subagent",
+    "parallel"
+  ],
+  "skills": "skills",
+  "commands": "commands",
+  "mcpServers": {
+    "gitea": {
+      "command": "sh",
+      "args": [
+        "${ZCODE_PLUGIN_ROOT}/mcp-shim/launch.sh"
+      ],
+      "env": {
+        "GITEA_HOST": "${user_config.gitea_host}",
+        "GITEA_ACCESS_TOKEN": "${user_config.gitea_token}"
+      }
+    },
+    "kubernetes": {
+      "type": "http",
+      "url": "${user_config.k8s_mcp_url}",
+      "headers": {
+        "Authorization": "Bearer ${user_config.k8s_mcp_token}"
+      }
+    }
+  },
+  "userConfig": {
+    "gitea_host": {
+      "type": "string",
+      "default": "",
+      "description": "你的 Gitea 实例地址（含协议头，如 https://gitea.example.com）"
+    },
+    "gitea_token": {
+      "type": "string",
+      "default": "",
+      "description": "Gitea API token（Gitea Web → Settings → Applications 创建，scope 按需勾选）"
+    },
+    "k8s_mcp_url": {
+      "type": "string",
+      "default": "",
+      "description": "统一只读 Kubernetes MCP 的 HTTPS Streamable HTTP 地址（通常以 /mcp 结尾）"
+    },
+    "k8s_mcp_token": {
+      "type": "string",
+      "default": "",
+      "description": "由基础设施侧按 Agent 签发的 Kubernetes MCP Bearer token；不得填 kubeconfig 或 Rancher token"
+    }
+  }
+}
