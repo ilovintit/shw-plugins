@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "registry": "reg.shw.top",
+  "project": "library",
+  "platform": "linux/amd64",
+  "bases": {
+    "NODE_BASE": "reg.shw.top/ci-cache/ci-node@sha256:973c9fd992b01a9519b8a35a0fc04318ad3dba341071198ce518937688d6d965",
+    "GO_BASE": "reg.shw.top/ci-cache/ci-golang@sha256:8e736350aeea4d3fcc8fcfab715c34a7acca72d63e79c87927d59660a3d77c37",
+    "PLAYWRIGHT_BASE": "reg.shw.top/ci-cache/ci-playwright@sha256:cf0daee9b994042e011bc29f20cdff1a9f682a039b43fcd738f7d8a9d3bcd9d6"
+  },
+  "images": {
+    "node": {
+      "name": "shw-ci-node",
+      "version": "1.0.0",
+      "dockerfile": "Dockerfile.node",
+      "bases": [
+        "NODE_BASE"
+      ],
+      "pnpm": [
+        "11.11.0",
+        "11.0.9"
+      ]
+    },
+    "go": {
+      "name": "shw-ci-go",
+      "version": "1.0.0",
+      "dockerfile": "Dockerfile.go",
+      "bases": [
+        "NODE_BASE",
+        "GO_BASE"
+      ],
+      "goMinimum": "1.25.7"
+    },
+    "playwright": {
+      "name": "shw-ci-playwright",
+      "version": "1.0.0",
+      "dockerfile": "Dockerfile.playwright",
+      "bases": [
+        "GO_BASE",
+        "PLAYWRIGHT_BASE"
+      ],
+      "playwright": "1.61.1",
+      "pnpm": [
+        "11.11.0",
+        "11.0.9"
+      ]
+    }
+  },
+  "published": {
+    "node": "reg.shw.top/library/shw-ci-node@sha256:e6c5f1599c6369fa6d759af3fd27e189da5147357e2956c8efa9b81e62be3197",
+    "go": "reg.shw.top/library/shw-ci-go@sha256:76fa262a7f331872dd4bbda9587b10527e23c42cb451f4e6cffbe52cc86bdcad",
+    "playwright": "reg.shw.top/library/shw-ci-playwright@sha256:3ef9176abc440a9e7ad44a13698658b24f65deafb9f1bf26c9c6e167d386f09c"
+  }
+}

@@ -1,0 +1,58 @@
+# Instantiate in the project after checking image.json.published and the project build entrypoint.
+# Production belongs in the existing successful release/tag chain; this example covers dev/test only.
+name: GitOps deployment
+on:
+  push:
+    branches: [dev, test]
+concurrency:
+  group: gitops-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    env:
+      SOURCE_SHA: ${{ github.sha }}
+      DEPLOY_ENV: ${{ github.ref_name }}
+      # Replace from the plugin's verified image.json, never latest or a candidate tag.
+      GITOPS_IMAGE: REPLACE_WITH_PUBLISHED_DIGEST
+    steps:
+      - name: Checkout exact source
+        uses: https://gitea.example.test/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Build project images and source-bound artifact record
+        env:
+          HARBOR_ADDR: ${{ github.ref_name == 'dev' && (vars.DEV_HARBOR_ADDR || vars.HARBOR_ADDR) || github.ref_name == 'test' && (vars.TEST_HARBOR_ADDR || vars.HARBOR_ADDR) }}
+          HARBOR_PROJECT: ${{ github.ref_name == 'dev' && (vars.DEV_HARBOR_PROJECT || vars.HARBOR_PROJECT) || github.ref_name == 'test' && (vars.TEST_HARBOR_PROJECT || vars.HARBOR_PROJECT) }}
+          HARBOR_USERNAME: ${{ github.ref_name == 'dev' && (secrets.DEV_HARBOR_USERNAME || secrets.HARBOR_USERNAME) || github.ref_name == 'test' && (secrets.TEST_HARBOR_USERNAME || secrets.HARBOR_USERNAME) }}
+          HARBOR_PASSWORD: ${{ github.ref_name == 'dev' && (secrets.DEV_HARBOR_PASSWORD || secrets.HARBOR_PASSWORD) || github.ref_name == 'test' && (secrets.TEST_HARBOR_PASSWORD || secrets.HARBOR_PASSWORD) }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GO_TOKEN: ${{ secrets.GO_TOKEN }}
+        run: |
+          mkdir -p .gitops-build
+          .gitea/scripts/build-gitops-images.sh "$SOURCE_SHA" "$DEPLOY_ENV" .gitops-build/images.json
+      - name: Publish complete declarations
+        env:
+          CHECKOUT_TOKEN: ${{ secrets.CHECKOUT_TOKEN }}
+          GITOPS_GIT_USERNAME: ${{ vars.GITOPS_GIT_USERNAME }}
+          HARBOR_ADDR: ${{ github.ref_name == 'dev' && (vars.DEV_HARBOR_ADDR || vars.HARBOR_ADDR) || github.ref_name == 'test' && (vars.TEST_HARBOR_ADDR || vars.HARBOR_ADDR) }}
+          HARBOR_USERNAME: ${{ github.ref_name == 'dev' && (secrets.DEV_HARBOR_USERNAME || secrets.HARBOR_USERNAME) || github.ref_name == 'test' && (secrets.TEST_HARBOR_USERNAME || secrets.HARBOR_USERNAME) }}
+          HARBOR_PASSWORD: ${{ github.ref_name == 'dev' && (secrets.DEV_HARBOR_PASSWORD || secrets.HARBOR_PASSWORD) || github.ref_name == 'test' && (secrets.TEST_HARBOR_PASSWORD || secrets.HARBOR_PASSWORD) }}
+        run: |
+          docker run --rm --user "$(id -u):$(id -g)" \
+            --volume "$GITHUB_WORKSPACE:/workspace" --workdir /workspace \
+            --env GITHUB_EVENT_NAME --env GITHUB_SHA --env GITHUB_REF --env GITHUB_SERVER_URL \
+            --env CHECKOUT_TOKEN --env GITOPS_GIT_USERNAME \
+            --env HARBOR_ADDR --env HARBOR_USERNAME --env HARBOR_PASSWORD \
+            "$GITOPS_IMAGE" shw-gitops publish --source /workspace --sha "$SOURCE_SHA" \
+            --environment "$DEPLOY_ENV" --config deploy/gitops.json \
+            --images .gitops-build/images.json --work .gitops-build/work > .gitops-build/publish-report.json
+      - name: Publication evidence
+        if: always()
+        run: |
+          if test -f .gitops-build/publish-report.json; then cat .gitops-build/publish-report.json; fi
