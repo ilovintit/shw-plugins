@@ -1,0 +1,43 @@
+{
+  "mcpServers": {
+    "gitea": {
+      "command": "sh",
+      "args": [
+        "./mcp-shim/launch.sh"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "GITEA_HOST",
+        "GITEA_ACCESS_TOKEN",
+        "GITEA_MCP_BIN",
+        "GITEA_MCP_CACHE_DIR",
+        "GITEA_MCP_DOWNLOAD_BASE",
+        "GITEA_MCP_CALL_TIMEOUT_SECS",
+        "SHW_MCP_WORKDIR"
+      ]
+    },
+    "worktree": {
+      "command": "sh",
+      "args": [
+        "./worktree-mcp/launch.sh"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "SHW_WORKTREE_ROOT",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME"
+      ]
+    },
+    "kubernetes": {
+      "command": "sh",
+      "args": [
+        "./kubernetes-mcp/launch.sh"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "XDG_CONFIG_HOME",
+        "SHW_K8S_PROFILE"
+      ]
+    }
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "sourceRepository": {
+      "type": "string",
+      "pattern": "^https://[^/@?#]+/[^?#]+(?:\\.git)?$"
+    },
+    "images": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+            }
+          }
+        },
+        "required": [
+          "repository",
+          "inputs"
+        ]
+      }
+    },
+    "environments": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "dev": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sourceBranch": {
+              "enum": [
+                "dev",
+                "test",
+                "main"
+              ]
+            },
+            "targetRepository": {
+              "type": "string",
+              "pattern": "^https://[^/@?#]+/[^?#]+(?:\\.git)?$"
+            },
+            "targetBranch": {
+              "enum": [
+                "fleet/dev",
+                "fleet/test",
+                "fleet/prod"
+              ]
+            },
+            "targetPath": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+            },
+            "render": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "raw",
+                    "kustomize",
+                    "helm"
+                  ]
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+                  }
+                },
+                "namespace": {
+                  "type": "string"
+                },
+                "release": {
+                  "type": "string"
+                },
+                "kubeVersion": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "path"
+              ]
+            }
+          },
+          "required": [
+            "sourceBranch",
+            "targetRepository",
+            "targetBranch",
+            "targetPath",
+            "render"
+          ]
+        },
+        "test": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sourceBranch": {
+              "enum": [
+                "dev",
+                "test",
+                "main"
+              ]
+            },
+            "targetRepository": {
+              "type": "string",
+              "pattern": "^https://[^/@?#]+/[^?#]+(?:\\.git)?$"
+            },
+            "targetBranch": {
+              "enum": [
+                "fleet/dev",
+                "fleet/test",
+                "fleet/prod"
+              ]
+            },
+            "targetPath": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+            },
+            "render": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "raw",
+                    "kustomize",
+                    "helm"
+                  ]
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+                  }
+                },
+                "namespace": {
+                  "type": "string"
+                },
+                "release": {
+                  "type": "string"
+                },
+                "kubeVersion": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "path"
+              ]
+            }
+          },
+          "required": [
+            "sourceBranch",
+            "targetRepository",
+            "targetBranch",
+            "targetPath",
+            "render"
+          ]
+        },
+        "prod": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sourceBranch": {
+              "enum": [
+                "dev",
+                "test",
+                "main"
+              ]
+            },
+            "targetRepository": {
+              "type": "string",
+              "pattern": "^https://[^/@?#]+/[^?#]+(?:\\.git)?$"
+            },
+            "targetBranch": {
+              "enum": [
+                "fleet/dev",
+                "fleet/test",
+                "fleet/prod"
+              ]
+            },
+            "targetPath": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+            },
+            "render": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "raw",
+                    "kustomize",
+                    "helm"
+                  ]
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+                  }
+                },
+                "namespace": {
+                  "type": "string"
+                },
+                "release": {
+                  "type": "string"
+                },
+                "kubeVersion": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "path"
+              ]
+            }
+          },
+          "required": [
+            "sourceBranch",
+            "targetRepository",
+            "targetBranch",
+            "targetPath",
+            "render"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "sourceRepository",
+    "images",
+    "environments"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "shw-gitops project configuration v1"
+}

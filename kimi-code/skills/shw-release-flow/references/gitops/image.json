@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "name": "shw-ci-gitops",
+  "version": "1.0.0",
+  "platform": "linux/amd64",
+  "builder": "reg.shw.top/library/shw-ci-go@sha256:76fa262a7f331872dd4bbda9587b10527e23c42cb451f4e6cffbe52cc86bdcad",
+  "base": "reg.shw.top/library/shw-ci-node@sha256:e6c5f1599c6369fa6d759af3fd27e189da5147357e2956c8efa9b81e62be3197",
+  "helm": "v3.19.0",
+  "kustomize": "v5.7.1",
+  "published": "reg.shw.top/library/shw-ci-gitops@sha256:ebce8a5cacbeec573a88b4dc72aa1da4570dc91404feb939dd4d43e16d0a232a"
+}

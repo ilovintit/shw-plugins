@@ -1,0 +1,37 @@
+{
+  "name": "shw",
+  "version": "7.4.1",
+  "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "homepage": "https://github.com/ilovintit/shw-plugins",
+  "repository": "https://github.com/ilovintit/shw-plugins",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "gitea",
+    "issue-driven",
+    "worktree",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "SHW",
+    "shortDescription": "一人 + Agent 产品全生命周期工作流",
+    "longDescription": "Product lifecycle workflow covering product truth, version planning, Issue delivery, release and production closure, with Gitea integration and plugin-managed worktree lifecycle. Slash commands from the shared source are packaged as explicit Codex skill prompts.",
+    "developerName": "shw-plugins contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/ilovintit/shw-plugins",
+    "defaultPrompt": [
+      "用 /product 更新产品真相",
+      "按 shw-worktree 调 worktree MCP 开工",
+      "用 /work 完成一个 Issue，或用 /roadmap 顺序完成整个版本"
+    ]
+  }
+}
