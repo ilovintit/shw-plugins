@@ -1,0 +1,60 @@
+# Materialize per actual miniprogram entry; adapt config/script/secret names.
+name: Upload Platform Miniprogram
+on:
+  push:
+    branches: [test, main]
+  workflow_dispatch:
+concurrency:
+  # Serialize by miniprogram, including test/main if they share an AppID.
+  group: wechat-platform-upload
+  cancel-in-progress: false
+jobs:
+  upload:
+    if: github.ref == 'refs/heads/test' || github.ref == 'refs/heads/main'
+    runs-on: ci-fast
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    container:
+      # Replace from the plugin miniprogram/image.json published reference.
+      image: reg.shw.top/library/shw-ci-wechat@sha256:70607d83565d061fc8c9c6d217622f87b01fa04fd96fe5fd77f7661a16bc8847
+    steps:
+      - name: Checkout exact source
+        uses: https://git.shw.top/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          token: ${{ secrets.CHECKOUT_TOKEN }}
+          submodules: recursive
+          persist-credentials: false
+      - name: Build this miniprogram with the project entrypoint
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          umask 077
+          npmrc=$(mktemp "$GITHUB_WORKSPACE/.wechat-npmrc.XXXXXX")
+          trap 'rm -f "$npmrc"' EXIT
+          test -n "$NPM_TOKEN"
+          auth=$(node -e 'process.stdout.write(Buffer.from("shared:"+process.env.NPM_TOKEN).toString("base64"))')
+          printf 'registry=https://npm.shw.top\n//npm.shw.top/:_auth=%s\naudit=false\nfund=false\n' "$auth" > "$npmrc"
+          unset auth NPM_TOKEN
+          export NPM_CONFIG_USERCONFIG="$npmrc"
+          # Project script chooses checked-in test/prod API config and builds a clean bundle.
+          # It must provide app.js, app.json and a matching project.config.json in dist.
+          sh .gitea/scripts/build-wechat-platform.sh
+      - name: Stamp and validate the compiled bundle
+        run: |
+          shw-wechat stamp --config deploy/wechat/platform.json
+          shw-wechat check --config deploy/wechat/platform.json
+      - name: Upload code to WeChat
+        env:
+          # One upload key per actual AppID; never commit it to Git.
+          WECHAT_PRIVATE_KEY: ${{ secrets.WECHAT_PLATFORM_PRIVATE_KEY }}
+        run: |
+          umask 077
+          key_file=$(mktemp "$GITHUB_WORKSPACE/.wechat-upload-key.XXXXXX")
+          trap 'rm -f "$key_file"' EXIT
+          test -n "$WECHAT_PRIVATE_KEY"
+          printf '%s' "$WECHAT_PRIVATE_KEY" > "$key_file"
+          unset WECHAT_PRIVATE_KEY
+          WECHAT_PRIVATE_KEY_FILE="$key_file" shw-wechat upload --config deploy/wechat/platform.json
