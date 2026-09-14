@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "appid": "REPLACE_WITH_THIS_MINIPROGRAM_APPID",
+  "projectPath": "src/platform-app/dist",
+  "channels": {
+    "test": {"robot": 2},
+    "main": {"robot": 1}
+  },
+  "setting": {"useProjectConfig": true}
+}

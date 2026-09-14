@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "registry": "reg.shw.top",
+  "project": "ci-cache",
+  "platform": "linux/amd64",
+  "images": {
+    "postgres": {
+      "repository": "library/postgres",
+      "version": "18.6-alpine",
+      "digest": "sha256:63bdc97d67b5133bf0e5ebd500bec6d046fa851dc81340d838f0347e616107e8",
+      "indexDigest": "sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+    },
+    "valkey": {
+      "repository": "valkey/valkey",
+      "version": "8.1.10-alpine",
+      "digest": "sha256:e55eb7bfbce02957d1a91fb1e26d69aa36eb18f77bf9f86ff6eff81f864b13b7",
+      "indexDigest": "sha256:d2e18f3410b6f616de1417f570fa55261af2898b9c5b2cfb6781ce2373ea43d1"
+    },
+    "rabbitmq": {
+      "repository": "library/rabbitmq",
+      "version": "3.13.7-management",
+      "digest": "sha256:9cfb7e92ae7d296aec4d1ae799e431209f7ed57d55f9c929d95667d0ccf1c920",
+      "indexDigest": "sha256:e582c0bc7766f3342496d8485efb5a1df782b5ce3886ad017e2eaae442311f69"
+    },
+    "silo": {
+      "repository": "pgsty/silo",
+      "version": "RELEASE.2026-09-03T13-18-01Z",
+      "digest": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "indexDigest": "sha256:b616a0cf8cb281e7e6bb3c9b1fb53875b4016a2878223925541c18f82d6c5ca3"
+    }
+  },
+  "verified": {
+    "postgres": "reg.shw.top/ci-cache/library/postgres@sha256:63bdc97d67b5133bf0e5ebd500bec6d046fa851dc81340d838f0347e616107e8",
+    "valkey": "reg.shw.top/ci-cache/valkey/valkey@sha256:e55eb7bfbce02957d1a91fb1e26d69aa36eb18f77bf9f86ff6eff81f864b13b7",
+    "rabbitmq": "reg.shw.top/ci-cache/library/rabbitmq@sha256:9cfb7e92ae7d296aec4d1ae799e431209f7ed57d55f9c929d95667d0ccf1c920",
+    "silo": "reg.shw.top/ci-cache/pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+  }
+}
