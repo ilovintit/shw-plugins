@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "gitea": {
+      "command": "sh",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp-shim/launch.sh"
+      ],
+      "env": {
+        "GITEA_HOST": "${user_config.gitea_host}",
+        "GITEA_ACCESS_TOKEN": "${user_config.gitea_token}"
+      }
+    },
+    "worktree": {
+      "command": "sh",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/worktree-mcp/launch.sh"
+      ],
+      "env": {
+        "SHW_WORKTREE_ROOT": "${user_config.worktree_root}"
+      }
+    },
+    "kubernetes": {
+      "type": "http",
+      "url": "${user_config.k8s_mcp_url}",
+      "headers": {
+        "Authorization": "Bearer ${user_config.k8s_mcp_token}"
+      }
+    }
+  }
+}
