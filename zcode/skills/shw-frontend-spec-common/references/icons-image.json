@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "name": "shw-ci-icons",
+  "version": "1.0.0",
+  "platform": "linux/amd64",
+  "lucide": { "repository": "shw-forks/lucide", "tag": "0.500.0", "commit": "2517eb642c66d345258cefe115dfd27a5d2caf91" },
+  "base": "reg.shw.top/library/shw-ci-node@sha256:e6c5f1599c6369fa6d759af3fd27e189da5147357e2956c8efa9b81e62be3197",
+  "published": null
+}
