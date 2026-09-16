@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "sourceRepository": "https://gitea.example.test/team/app.git",
+  "sourceSHA": "0000000000000000000000000000000000000000",
+  "environment": "dev",
+  "images": {
+    "api": {
+      "sourceSHA": "0000000000000000000000000000000000000000",
+      "image": "registry.example.test/team/api@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}
