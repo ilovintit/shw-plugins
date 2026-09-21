@@ -1,0 +1,11 @@
+{
+  "version": "2",
+  "plugins": [
+    {
+      "id": "shw-plugins",
+      "displayName": "SHW Plugins",
+      "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+      "source": "https://github.com/ilovintit/shw-plugins"
+    }
+  ]
+}
