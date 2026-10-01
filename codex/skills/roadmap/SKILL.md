@@ -1,0 +1,45 @@
+---
+name: roadmap
+description: "Codex prompt workflow for roadmap、/roadmap. 按依赖逐步交付一个小版本；每个可体验功能完成后提供入口并等待用户反馈，再继续下一项。 Use only when the user explicitly asks for this named workflow."
+---
+
+# roadmap
+
+这是共享源码中 slash command 的 Codex skill-backed prompt，不是 Codex 原生 commands。用户明确点名 `roadmap`、`/roadmap` 或要求执行该工作流时按下方原文执行。
+
+## Issue 工作区管理
+
+文件修改前加载 shw-worktree，使用插件的 worktree MCP acquire 取得独立编号分支与绝对路径。当前会话全程执行，所有文件/命令明确指向返回路径；不为隔离工作区自动 fork 或调用 Handoff。保存本次 claim_id，暂停用 release，交付完成后按 Skill 调用 remove；查询和恢复使用 inspect/list/reconcile。
+这是插件提供的协作工具，不拦截 shell/文件操作，也不改变 Codex 的任务环境绑定。用户明确选择的外部工作区不自动接管或删除。
+
+**参数**：<Version 或 Milestone>
+
+**项目外只读**：仅可修改当前项目已确认的工作目录（交付时为当前 Issue worktree）；外部路径禁止直接或间接写入。需要修改时先停止，报告路径、原因和拟修改内容，请用户介入并交其他获授权 Agent 或用户手动处理。完整边界及有限运行例外见 `shw-issue-gate`，执行前必须读取。
+
+版本级执行编排器。执行前加载 `shw-version-planning`、`shw-delivery`、`shw-acceptance`、`shw-gitea-flow`、`shw-gitea-ci`、`shw-worktree` 和 `shw-verify`。
+
+## 前置条件
+
+- 当前 Milestone 范围已获用户确认，现有 PRD 与必要技术方案足够支撑当前项；
+- 当前 Issue 有明确 AC、依赖、体验步骤和适用工程检查；Agent 可在已授权范围内补齐规划，不等待全版本拆分/测试计划完备；
+- 读取 Milestone/Issue 中尚待反馈的已交付项，先处理反馈和阻断，不能把续跑当作体验自动通过。
+
+## 执行
+
+1. 读取当前 Milestone、相关 Issue/PR、反馈和 CI，确定下一个依赖已满足的小功能；开发环境未打通时先交付最小运行链路。
+2. **严格串行**：每个 Issue 使用独立受管工作区、编号分支和 PR，调用与 `/work` 同源的 `shw-delivery` 完成它，不并行推进多个 Issue。
+3. 读取真实 PR CI，修复到绿后合入 dev、回填并关闭交付 Issue；核对实际开发部署/构建与源码，入口就绪后提供体验交接。
+4. **逐功能反馈检查点**：列出入口、源码/制品或部署标识、体验步骤、可用数据/角色及已知限制；在 Milestone/Issue 标记“待用户反馈”，结束本轮并等待用户回复，不继续下一个可体验功能，也不推定验收通过。
+5. 收到反馈后优先修正本功能。未合并时在原 Issue/PR 内修改；已合并则创建关联的小修正 Issue/PR。布局与操作体验直接迭代；业务规则或契约变化经裁决后同步 PRD/技术文档。
+6. 用户确认满意或明确要求继续后，从最新 dev 推进下一项；“继续”仅授权推进，不冒充人工验收通过。用户明确授权跳过检查点时可依授权连续开发，并记录未体验范围，发布仍使用真实候选确认事实。
+7. 非体验维护项可按依赖继续处理，不要求虚构页面验收，也不能绕过仍待反馈的可体验功能。范围变化和外部阻断使用既有裁决/交接机制。
+
+## 完成边界
+
+单轮可以停在一个功能已进入 dev、入口就绪但待反馈的状态；这不表示整个版本完成。范围全部交付后，汇总反馈、已确认与未确认范围、修正项及候选跨功能检查，交用户确认发布候选，再进入 `/release`。
+
+本命令不发布、不关闭 Milestone、不自动合并 main。工程合并与 Issue 关闭不等于用户体验通过。
+
+## Codex 临时 fork 任务收尾
+
+如果本命令通过 Codex 原生 fork/create task 建立了临时子任务，主任务在收集结果并完成独立验证后，必须逐个检查状态，并使用 Codex 原生任务归档能力归档本次命令创建且已经完成或明确不再需要的临时任务。不得归档仍在运行、等待用户输入、需要关注或由用户独立创建的任务；任务归档与 Git worktree 清理是两件事，不得用删除 worktree 代替归档任务。
