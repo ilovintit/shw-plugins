@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "name": "shw-ci-wechat",
+  "version": "1.0.2",
+  "platform": "linux/amd64",
+  "sdk": "2.1.31",
+  "base": "reg.shw.top/library/shw-ci-node@sha256:e6c5f1599c6369fa6d759af3fd27e189da5147357e2956c8efa9b81e62be3197",
+  "published": "reg.shw.top/library/shw-ci-wechat@sha256:ccd10163ca0e96078b58a91010507e7c7b1371c53870fbca70c33c1d4743afd3"
+}

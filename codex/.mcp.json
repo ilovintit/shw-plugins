@@ -1,0 +1,69 @@
+{
+  "mcpServers": {
+    "dbx": {
+      "command": "node",
+      "args": [
+        "./dbx-mcp/launch.cjs"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "DBX_WEB_URL",
+        "DBX_WEB_PASSWORD",
+        "SHW_DBX_PROFILE",
+        "XDG_CONFIG_HOME",
+        "XDG_CACHE_HOME",
+        "USERPROFILE",
+        "LOCALAPPDATA"
+      ]
+    },
+    "gitea": {
+      "command": "node",
+      "args": [
+        "./mcp-shim/launch.cjs"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "GITEA_HOST",
+        "GITEA_ACCESS_TOKEN",
+        "GITEA_MCP_BIN",
+        "GITEA_MCP_CACHE_DIR",
+        "GITEA_MCP_DOWNLOAD_BASE",
+        "GITEA_MCP_CALL_TIMEOUT_SECS",
+        "SHW_MCP_WORKDIR",
+        "XDG_CONFIG_HOME",
+        "XDG_CACHE_HOME",
+        "USERPROFILE",
+        "LOCALAPPDATA"
+      ]
+    },
+    "worktree": {
+      "command": "node",
+      "args": [
+        "./worktree-mcp/launch.cjs"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "SHW_WORKTREE_ROOT",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME",
+        "XDG_CACHE_HOME",
+        "USERPROFILE",
+        "LOCALAPPDATA"
+      ]
+    },
+    "kubernetes": {
+      "command": "node",
+      "args": [
+        "./kubernetes-mcp/launch.cjs"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "XDG_CONFIG_HOME",
+        "SHW_K8S_PROFILE",
+        "XDG_CACHE_HOME",
+        "USERPROFILE",
+        "LOCALAPPDATA"
+      ]
+    }
+  }
+}
