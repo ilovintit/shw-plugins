@@ -1,0 +1,17 @@
+{
+  "name": "shw-worktree",
+  "version": "10.1.0",
+  "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+  "license": "MIT",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "userConfig": {
+    "worktree_root": {
+      "type": "string",
+      "title": "Worktree root",
+      "default": "",
+      "description": "可选绝对路径；留空读取既有用户级 worktree.json 或默认用户数据目录"
+    }
+  }
+}
