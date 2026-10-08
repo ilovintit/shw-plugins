@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "worktree": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/worktree-mcp/launch.cjs"
+      ],
+      "env": {
+        "SHW_WORKTREE_ROOT": "${user_config.worktree_root}"
+      }
+    }
+  }
+}
