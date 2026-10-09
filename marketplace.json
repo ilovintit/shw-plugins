@@ -1,0 +1,26 @@
+{
+  "name": "shw-plugins-market",
+  "plugins": [
+    {
+      "name": "shw-plugins",
+      "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+      "source": "./zcode",
+      "version": "10.3.1",
+      "category": "developer-tools"
+    },
+    {
+      "name": "shw-mcp",
+      "description": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+      "source": "./mcp/zcode",
+      "version": "10.3.1",
+      "category": "developer-tools"
+    },
+    {
+      "name": "shw-worktree",
+      "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+      "source": "./worktree/zcode",
+      "version": "10.3.1",
+      "category": "developer-tools"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "version": "0.4.108",
+  "platforms": {
+    "darwin-arm64": {
+      "tarball": "https://registry.npmjs.org/@dbx-app/mcp-darwin-arm64/-/mcp-darwin-arm64-0.4.108.tgz",
+      "integrity": "sha512-EypkoarkLlx0FvRy1yYtPCaTIRLR73HJhBu3kL5bjMuGHKQBFVuXWElR5nv4DD+GCpHS15VgdqK0GrCr7Nuyug=="
+    },
+    "darwin-x64": {
+      "tarball": "https://registry.npmjs.org/@dbx-app/mcp-darwin-x64/-/mcp-darwin-x64-0.4.108.tgz",
+      "integrity": "sha512-k0kj5r/YKttLC0DfMCkz/JL11smhjSDx3rpN7TZqqLZp2ckfqUCCiWZ2ciL5eg3WAqOd14gqxvTFmhGm0u4plA=="
+    },
+    "linux-x64": {
+      "tarball": "https://registry.npmjs.org/@dbx-app/mcp-linux-x64-gnu/-/mcp-linux-x64-gnu-0.4.108.tgz",
+      "integrity": "sha512-Pc4ckrAWHX9H2IgVnM8MKiH6A4/QUCJvFirBzNwG+HfZgY+iwePpCg7voqQqiKGJk+hlvTWEL91pgmP1mncHaw=="
+    },
+    "win32-x64": {
+      "tarball": "https://registry.npmjs.org/@dbx-app/mcp-win32-x64/-/mcp-win32-x64-0.4.108.tgz",
+      "integrity": "sha512-iK2wP53kOI1IVleg1/7hkGl5WqANSfttLMf2QP+3nL4PVxKKvszciLjf5D7HmQuTj9LD4+TqOYPf4Z+WEqF46Q=="
+    },
+    "win32-arm64": {
+      "tarball": "https://registry.npmjs.org/@dbx-app/mcp-win32-arm64/-/mcp-win32-arm64-0.4.108.tgz",
+      "integrity": "sha512-1NKsrPCQY7B9bH2CpZ5gmxHBeVQuE1eZwb9JuKjdsOQTWxZ2Y2c8wyT1/vCAp3GIK282wCBE+69Igu+swy/8Jw=="
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "sourceRepository": "https://gitea.example.test/team/app.git",
+  "images": {
+    "api": {
+      "repository": "registry.example.test/team/api",
+      "inputs": ["services/api", "shared", "go.mod", "go.sum", "deploy", ".gitea"]
+    }
+  },
+  "environments": {
+    "dev": {
+      "sourceBranch": "dev",
+      "targetRepository": "https://gitea.example.test/team/app.git",
+      "targetBranch": "fleet/dev",
+      "targetPath": "apps/app",
+      "render": {"kind": "raw", "path": "deploy/fleet/dev"}
+    },
+    "test": {
+      "sourceBranch": "test",
+      "targetRepository": "https://gitea.example.test/team/app.git",
+      "targetBranch": "fleet/test",
+      "targetPath": "apps/app",
+      "render": {"kind": "kustomize", "path": "deploy/fleet/test"}
+    },
+    "prod": {
+      "sourceBranch": "main",
+      "targetRepository": "https://gitea.example.test/team/app.git",
+      "targetBranch": "fleet/prod",
+      "targetPath": "apps/app",
+      "render": {"kind": "helm", "path": "deploy/chart", "values": ["deploy/prod-values.yaml"], "namespace": "app-prod", "release": "app", "kubeVersion": "1.34.0"}
+    }
+  }
+}
