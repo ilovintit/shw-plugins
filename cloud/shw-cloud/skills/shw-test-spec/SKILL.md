@@ -1,0 +1,20 @@
+---
+name: shw-test-spec
+description: dev→main 集成测试与候选基线规则，保护未预期改变的行为。
+---
+
+执行前读取 [cloud-runtime.md](cloud-runtime.md)，按实际工具与工作区提供者执行。
+
+执行前必须读取 `shw-issue-gate`；修改前读取 `shw-workspace` 并确认项目、目录、Issue 与所有权。项目外只读，未知修改不覆盖；能力缺失不扩大授权。
+
+# 测试与基线
+
+开发阶段必须执行类型检查、适用 lint/静态检查及本次改动涉及的单元与单模块 API 快速测试；全量 E2E、VRT、全量 API 等长周期回归集中到 dev→main 集成。必要构建、部署正常执行，tag 不新增测试阶段；检查通过不能代替人工验收。
+
+执行开发快速检查时按变更选择模块、受控数据并记录源码 SHA/命令/结果；不要求人工验收或冻结集成候选。执行集成全量回归前必须读取 `shw-integration` 及其 `references/candidate.md`，再读 [执行与覆盖](references/execution.md)。测试环境不得污染共享开发或生产数据。
+
+适用单元/协议/安全检查和 API/E2E/VRT 在冻结候选中执行；后者保护未预期改变的行为。默认比较全部适用既有基线，定向诊断标为 partial，不能冒充完整放行。
+
+只有分类为已验收预期变化的差异才能更新对应断言/候选基线，范围绑定本集成 PR。无旧基线须场景正常执行且候选已人工验收，才建立初始候选并重跑。通过后随合并晋升，禁止直接覆盖正式基线。并发基线、目标分支或候选变化使旧结果失效。
+
+工具链/内部依赖见 references/ci-config.md、ci-cache.md、ci-images.md 及版本化镜像 JSON；这些是执行配置，不迁出到不可验证的知识库。恢复与漂移见 [历史与恢复](references/history-sync.md)。

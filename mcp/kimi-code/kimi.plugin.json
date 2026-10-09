@@ -1,0 +1,44 @@
+{
+  "name": "shw-mcp",
+  "version": "10.2.2",
+  "description": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+  "author": "shw-plugins contributors",
+  "license": "MIT",
+  "keywords": [
+    "issue-driven",
+    "workflow",
+    "tdd",
+    "subagent",
+    "parallel"
+  ],
+  "interface": {
+    "displayName": "SHW MCP",
+    "shortDescription": "Gitea、DBX 与 Kubernetes 工具集",
+    "longDescription": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+    "developerName": "shw-plugins contributors",
+    "websiteURL": "https://github.com/ilovintit/shw-plugins"
+  },
+  "mcpServers": {
+    "dbx": {
+      "command": "node",
+      "args": [
+        "./dbx-mcp/launch.cjs"
+      ],
+      "cwd": "./"
+    },
+    "gitea": {
+      "command": "node",
+      "args": [
+        "./mcp-shim/launch.cjs"
+      ],
+      "cwd": "./"
+    },
+    "kubernetes": {
+      "command": "node",
+      "args": [
+        "./kubernetes-mcp/launch.cjs"
+      ],
+      "cwd": "./"
+    }
+  }
+}

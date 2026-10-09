@@ -1,0 +1,11 @@
+{
+  "source_commit": "41695472421fd988b5bfaad35facc5662105d60e",
+  "source_dirty": true,
+  "source_version": "10.2.2",
+  "skill_count": 51,
+  "declared_remote_services": [],
+  "live_connections_verified": false,
+  "cloud_mcp_mode": "separately-installed-existing-account-connection",
+  "local_launchers_included": false,
+  "worktree_skill_included": false
+}
