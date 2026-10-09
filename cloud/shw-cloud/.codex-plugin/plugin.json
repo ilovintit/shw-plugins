@@ -1,0 +1,27 @@
+{
+  "name": "shw-cloud",
+  "version": "10.2.3",
+  "description": "SHW cloud workflow skills with optional existing remote MCP connections.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "license": "MIT",
+  "interface": {
+    "displayName": "SHW Cloud",
+    "shortDescription": "SHW 产品开发与交付工作流",
+    "longDescription": "SHW cloud workflow skills. Remote service access requires separately authenticated MCP connections; local launchers are excluded.",
+    "developerName": "shw-plugins contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/ilovintit/shw-plugins",
+    "defaultPrompt": [
+      "用 /product 更新产品真相",
+      "按 shw-workspace 核对当前宿主工作区归属后开工",
+      "用 /work 完成一个 Issue，或用 /roadmap 顺序完成整个版本"
+    ]
+  },
+  "skills": "./skills"
+}

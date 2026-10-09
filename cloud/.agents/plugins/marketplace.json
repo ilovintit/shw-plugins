@@ -1,0 +1,17 @@
+{
+  "name": "shw-cloud-market",
+  "plugins": [
+    {
+      "name": "shw-cloud",
+      "source": {
+        "source": "local",
+        "path": "./shw-cloud"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

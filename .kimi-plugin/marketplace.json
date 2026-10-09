@@ -1,0 +1,23 @@
+{
+  "version": "2",
+  "plugins": [
+    {
+      "id": "shw-plugins",
+      "displayName": "shw-plugins",
+      "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+      "source": "https://github.com/ilovintit/shw-plugins"
+    },
+    {
+      "id": "shw-mcp",
+      "displayName": "shw-mcp",
+      "description": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+      "source": "https://github.com/ilovintit/shw-plugins/releases/download/v10.2.3/shw-mcp-kimi-code.zip"
+    },
+    {
+      "id": "shw-worktree",
+      "displayName": "shw-worktree",
+      "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+      "source": "https://github.com/ilovintit/shw-plugins/releases/download/v10.2.3/shw-worktree-kimi-code.zip"
+    }
+  ]
+}
