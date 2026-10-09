@@ -1,0 +1,23 @@
+{
+  "name": "shw-plugins",
+  "version": "10.3.5",
+  "description": "Workflow skills and engineering standards for requirements, technical design, development with fast checks, integration and release. MCP tools and Worktree are provided by separate plugins; available local MCP tools take priority.",
+  "author": "shw-plugins contributors",
+  "license": "MIT",
+  "keywords": [
+    "issue-driven",
+    "workflow",
+    "tdd",
+    "subagent",
+    "parallel"
+  ],
+  "interface": {
+    "displayName": "SHW Plugins",
+    "shortDescription": "一人 + Agent 产品全生命周期工作流",
+    "longDescription": "Product lifecycle workflow covering product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+    "developerName": "shw-plugins contributors",
+    "websiteURL": "https://github.com/ilovintit/shw-plugins"
+  },
+  "skills": "./kimi-code/skills/",
+  "commands": "./kimi-code/commands/"
+}
