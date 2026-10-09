@@ -1,0 +1,11 @@
+{
+  "name": "shw-plugins",
+  "version": "10.2.1",
+  "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "commands": "./commands/"
+}

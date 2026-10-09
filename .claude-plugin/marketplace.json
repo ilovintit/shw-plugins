@@ -1,0 +1,26 @@
+{
+  "name": "shw-plugins-market",
+  "owner": {
+    "name": "shw-plugins contributors"
+  },
+  "plugins": [
+    {
+      "name": "shw-plugins",
+      "description": "Product lifecycle workflow with product truth, version planning, Issue delivery, release, Fleet observability, engineering standards, and Gitea integration.",
+      "source": "./claude-code",
+      "version": "10.2.1"
+    },
+    {
+      "name": "shw-mcp",
+      "description": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+      "source": "./mcp/claude-code",
+      "version": "10.2.1"
+    },
+    {
+      "name": "shw-worktree",
+      "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+      "source": "./worktree/claude-code",
+      "version": "10.2.1"
+    }
+  ]
+}
