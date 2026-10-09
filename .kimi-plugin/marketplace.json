@@ -1,0 +1,23 @@
+{
+  "version": "2",
+  "plugins": [
+    {
+      "id": "shw-plugins",
+      "displayName": "shw-plugins",
+      "description": "Workflow skills and engineering standards for requirements, technical design, development with fast checks, integration and release. MCP tools and Worktree are provided by separate plugins; available local MCP tools take priority.",
+      "source": "https://github.com/ilovintit/shw-plugins"
+    },
+    {
+      "id": "shw-mcp",
+      "displayName": "shw-mcp",
+      "description": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+      "source": "https://github.com/ilovintit/shw-plugins/releases/download/v10.3.4/shw-mcp-kimi-code.zip"
+    },
+    {
+      "id": "shw-worktree",
+      "displayName": "shw-worktree",
+      "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+      "source": "https://github.com/ilovintit/shw-plugins/releases/download/v10.3.4/shw-worktree-kimi-code.zip"
+    }
+  ]
+}
