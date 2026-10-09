@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "dbx": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/dbx-mcp/launch.cjs"
+      ],
+      "env": {
+        "DBX_WEB_URL": "${user_config.dbx_web_url}",
+        "DBX_WEB_PASSWORD": "${user_config.dbx_web_password}"
+      }
+    },
+    "gitea": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp-shim/launch.cjs"
+      ],
+      "env": {
+        "GITEA_HOST": "${user_config.gitea_host}",
+        "GITEA_ACCESS_TOKEN": "${user_config.gitea_token}"
+      }
+    },
+    "kubernetes": {
+      "type": "http",
+      "url": "${user_config.k8s_mcp_url}",
+      "headers": {
+        "Authorization": "Bearer ${user_config.k8s_mcp_token}"
+      }
+    }
+  }
+}
