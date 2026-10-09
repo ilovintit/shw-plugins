@@ -1,0 +1,26 @@
+{
+  "name": "shw-plugins-market",
+  "plugins": [
+    {
+      "name": "shw-plugins",
+      "description": "Workflow skills and engineering standards for requirements, technical design, development with fast checks, integration and release. MCP tools and Worktree are provided by separate plugins; available local MCP tools take priority.",
+      "source": "./zcode",
+      "version": "10.3.2",
+      "category": "developer-tools"
+    },
+    {
+      "name": "shw-mcp",
+      "description": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+      "source": "./mcp/zcode",
+      "version": "10.3.2",
+      "category": "developer-tools"
+    },
+    {
+      "name": "shw-worktree",
+      "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+      "source": "./worktree/zcode",
+      "version": "10.3.2",
+      "category": "developer-tools"
+    }
+  ]
+}
