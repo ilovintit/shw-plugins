@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SHW project settings",
+  "type": "object",
+  "required": [
+    "version",
+    "mode"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "mode": {
+      "enum": [
+        "issue-main",
+        "issue-dev",
+        "managed"
+      ]
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "auto",
+            "host",
+            "worktree"
+          ]
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "forge": {
+          "enum": [
+            "gitea",
+            "github"
+          ]
+        },
+        "owner": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "integration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "const": "dev"
+        },
+        "target": {
+          "const": "main"
+        },
+        "mergeMethod": {
+          "const": "merge"
+        },
+        "cadence": {
+          "enum": [
+            "batch",
+            "daily"
+          ]
+        },
+        "mergeAuthority": {
+          "enum": [
+            "user",
+            "explicit-project-authorization"
+          ]
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trigger": {
+          "enum": [
+            "tag",
+            "approval"
+          ]
+        },
+        "reuseVerifiedDigest": {
+          "const": true
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "developmentTarget": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "namePrefix": {
+          "type": "string"
+        },
+        "hosts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "fleetRepository": {
+          "type": "string"
+        },
+        "fleetBranch": {
+          "type": "string"
+        },
+        "fleetPath": {
+          "type": "string"
+        },
+        "registryProject": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

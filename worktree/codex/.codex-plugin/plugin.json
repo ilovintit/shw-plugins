@@ -1,0 +1,15 @@
+{
+  "name": "shw-worktree",
+  "version": "10.3.3",
+  "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+  "license": "MIT",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "SHW Worktree",
+    "shortDescription": "独立的本地工作区所有权与生命周期管理"
+  }
+}

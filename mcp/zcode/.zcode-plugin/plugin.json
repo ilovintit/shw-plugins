@@ -1,0 +1,10 @@
+{
+  "name": "shw-mcp",
+  "version": "10.3.3",
+  "description": "Gitea, DBX and Kubernetes tools with shared versioned runtimes.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "license": "MIT",
+  "mcpServers": "./.mcp.json"
+}
