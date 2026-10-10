@@ -1,0 +1,36 @@
+{
+  "name": "shw",
+  "version": "10.4.0",
+  "description": "Workflow skills and engineering standards for requirements, technical design, development with fast checks, integration and release. MCP tools and Worktree are provided by separate plugins; available local MCP tools take priority.",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "homepage": "https://github.com/ilovintit/shw-plugins",
+  "repository": "https://github.com/ilovintit/shw-plugins",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "gitea",
+    "issue-driven",
+    "worktree",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SHW",
+    "shortDescription": "产品研发与交付工作流及工程规范",
+    "longDescription": "提供需求梳理、必要技术设计、开发与快速检查、集成及发布的工作流技能和工程规范。MCP 工具集与 Worktree 由独立插件提供；已安装且可用的本地 MCP 工具优先使用。",
+    "developerName": "shw-plugins contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/ilovintit/shw-plugins",
+    "defaultPrompt": [
+      "用 /product 更新产品真相",
+      "先确认工作区与任务所有权再开工",
+      "用 /work 完成一个 Issue，或用 /roadmap 顺序完成整个版本"
+    ]
+  }
+}

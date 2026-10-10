@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "registry": "reg.shw.top",
+  "project": "library",
+  "platform": "linux/amd64",
+  "bases": {
+    "NODE_BASE": "reg.shw.top/ci-cache/ci-node@sha256:973c9fd992b01a9519b8a35a0fc04318ad3dba341071198ce518937688d6d965",
+    "GO_BASE": "reg.shw.top/ci-cache/ci-golang@sha256:8e736350aeea4d3fcc8fcfab715c34a7acca72d63e79c87927d59660a3d77c37",
+    "PLAYWRIGHT_BASE": "reg.shw.top/ci-cache/ci-playwright@sha256:cf0daee9b994042e011bc29f20cdff1a9f682a039b43fcd738f7d8a9d3bcd9d6",
+    "RUST_BASE": "reg.shw.top/ci-cache/library/rust@sha256:813376c206852d4250641eb86720c04fd20fbc6547d1a030c93a45b22a1303a3"
+  },
+  "images": {
+    "node": {
+      "name": "shw-ci-node",
+      "version": "1.0.1",
+      "dockerfile": "Dockerfile.node",
+      "bases": [
+        "NODE_BASE"
+      ],
+      "pnpm": [
+        "11.11.0",
+        "11.0.9"
+      ]
+    },
+    "go": {
+      "name": "shw-ci-go",
+      "version": "1.0.1",
+      "dockerfile": "Dockerfile.go",
+      "bases": [
+        "NODE_BASE",
+        "GO_BASE"
+      ],
+      "goMinimum": "1.25.7"
+    },
+    "playwright": {
+      "name": "shw-ci-playwright",
+      "version": "1.0.1",
+      "dockerfile": "Dockerfile.playwright",
+      "bases": [
+        "GO_BASE",
+        "PLAYWRIGHT_BASE"
+      ],
+      "playwright": "1.61.1",
+      "pnpm": [
+        "11.11.0",
+        "11.0.9"
+      ]
+    },
+    "rust": {
+      "name": "shw-ci-rust",
+      "version": "1.0.1",
+      "dockerfile": "Dockerfile.rust",
+      "bases": [
+        "RUST_BASE"
+      ],
+      "rust": "1.85.1",
+      "targets": [
+        "wasm32-wasip1"
+      ]
+    }
+  },
+  "published": {
+    "rust": "reg.shw.top/library/shw-ci-rust@sha256:0a0e5d7c68ecea45b0ca4f74992441cca2722ba1184f7eb1168ff571f686b2b9",
+    "node": "reg.shw.top/library/shw-ci-node@sha256:338ec39808e0a412a8b19c4619c3484172b106651308807e57c332e1bbeb381e",
+    "go": "reg.shw.top/library/shw-ci-go@sha256:9c8ff315c23a03d3032a417d070f591a4767b843c8467ab3cf44e283a86710dc",
+    "playwright": "reg.shw.top/library/shw-ci-playwright@sha256:2dd3d449b3ca5904c4a95ca69b4a55106bc8b33494c4e774ea60a045ede14fb9"
+  },
+  "publishedVersion": {
+    "node": "1.0.1",
+    "go": "1.0.1",
+    "playwright": "1.0.1",
+    "rust": "1.0.1"
+  }
+}
