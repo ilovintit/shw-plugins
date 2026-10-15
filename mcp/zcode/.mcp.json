@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "dbx": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/dbx-mcp/launch.cjs"
+      ]
+    },
+    "gitea": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp-shim/launch.cjs"
+      ]
+    },
+    "kubernetes": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/kubernetes-mcp/launch.cjs"
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "shw-local-test",
+  "version": "1.0.0",
+  "description": "Mac mini 本地按需测试、项目端口登记与套件租约",
+  "license": "MIT",
+  "skills": "./skills/",
+  "author": {
+    "name": "shw-plugins contributors"
+  }
+}
