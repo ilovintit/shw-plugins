@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "mode": "managed",
+  "workspace": {
+    "provider": "auto"
+  },
+  "repository": {
+    "forge": "gitea",
+    "owner": "example-org",
+    "name": "example-product"
+  },
+  "integration": {
+    "source": "dev",
+    "target": "main",
+    "mergeMethod": "merge",
+    "cadence": "batch",
+    "mergeAuthority": "user"
+  },
+  "release": {
+    "trigger": "tag",
+    "reuseVerifiedDigest": true
+  },
+  "deployment": {
+    "developmentTarget": "REPLACE_WITH_VERIFIED_TARGET",
+    "namespace": "REPLACE_WITH_VERIFIED_NAMESPACE",
+    "namePrefix": "example",
+    "hosts": [
+      "example-api.example.com"
+    ],
+    "fleetBranch": "fleet/dev",
+    "fleetPath": "deploy/dev",
+    "registryProject": "example"
+  }
+}

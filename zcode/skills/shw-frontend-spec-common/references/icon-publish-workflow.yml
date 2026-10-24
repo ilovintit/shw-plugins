@@ -1,0 +1,33 @@
+# Copy into a business repository and replace the image digest only with the
+# verified value published by shw-plugins. deploy/icons/config.json contains no credentials.
+name: Publish icon fonts
+on:
+  pull_request:
+    branches: [dev]
+    paths: [deploy/icons/config.json, src/**]
+  push:
+    branches: [dev]
+    paths: [deploy/icons/config.json, src/**]
+jobs:
+  verify:
+    if: github.event_name == 'pull_request'
+    runs-on: ci-fast
+    container:
+      image: reg.shw.top/library/shw-ci-icons@sha256:REPLACE_WITH_VERIFIED_DIGEST
+    steps:
+      - uses: https://git.shw.top/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: shw-icons build --config deploy/icons/config.json
+      - run: shw-icons check --config deploy/icons/config.json
+  publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    runs-on: ci-fast
+    container:
+      image: reg.shw.top/library/shw-ci-icons@sha256:REPLACE_WITH_VERIFIED_DIGEST
+    env:
+      SHW_ICONS_ACCESS_KEY_ID: ${{ secrets.SHW_ICONS_ACCESS_KEY_ID }}
+      SHW_ICONS_ACCESS_KEY_SECRET: ${{ secrets.SHW_ICONS_ACCESS_KEY_SECRET }}
+    steps:
+      - uses: https://git.shw.top/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: shw-icons build --config deploy/icons/config.json
+      - run: shw-icons check --config deploy/icons/config.json
+      - run: shw-icons publish --config deploy/icons/config.json
