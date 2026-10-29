@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "worktree": {
+      "command": "node",
+      "args": [
+        "./worktree-mcp/launch.cjs"
+      ]
+    }
+  }
+}

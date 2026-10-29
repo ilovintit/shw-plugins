@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "project": "example",
+  "registry": "host-default",
+  "ports": {"postgres": 20000, "valkey": 20001, "rabbitmq": 20002, "api-e2e": 20003, "api-vrt": 20004},
+  "composeProject": "example-local-test",
+  "bind": "127.0.0.1",
+  "suites": {
+    "e2e": {"postgresDatabase": "example_test_e2e", "valkeyDB": 2, "valkeyPrefix": "example:e2e:", "rabbitmqVhost": "example-test-e2e", "siloBucket": "example-test-e2e"},
+    "vrt": {"postgresDatabase": "example_test_vrt", "valkeyDB": 3, "valkeyPrefix": "example:vrt:", "rabbitmqVhost": "example-test-vrt", "siloBucket": "example-test-vrt"}
+  },
+  "artifacts": ".cache/local-test",
+  "postgresTimeZone": "Asia/Shanghai"
+}

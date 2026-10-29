@@ -1,0 +1,24 @@
+{
+  "name": "shw-worktree",
+  "version": "10.5.5",
+  "description": "Independent local Git workspace ownership, isolation and recovery capability.",
+  "license": "MIT",
+  "author": {
+    "name": "shw-plugins contributors"
+  },
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "shw",
+    "worktree"
+  ],
+  "pi": {
+    "skills": [
+      "./skills"
+    ],
+    "extensions": [
+      "./extensions/index.js"
+    ]
+  }
+}
